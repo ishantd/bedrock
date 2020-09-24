@@ -4,7 +4,7 @@
 
 {% extends "firefox/base/base-protocol.html" %}
 
-{% from "macros.html" import twitter_share_url with context %}
+{% from "macros.html" import google_play_button with context %}
 {% from "macros-protocol.html" import card, call_out, hero with context %}
 
 {% block page_title %}Unfck the Internet - Aus Liebe zum Web{% endblock %}
@@ -85,6 +85,17 @@
     <a href="{{ url('firefox.facebookcontainer.index') }}" class="mzp-c-button mzp-t-product mzp-t-xl c-button-fb-container hide-from-legacy-ie" data-cta-type="button" data-cta-text="Add Facebook Container">
       Facebook-Container hinzufügen
     </a>
+
+    {% set android_url = firefox_adjust_url('android', 'unfck-page') %}
+    {% set ios_url = firefox_adjust_url('ios', 'unfck-page') %}
+    <div class="c-button-android hide-from-legacy-ie">
+      {{ google_play_button(href=android_url, id='playStoreLink') }}
+    </div>
+    <div class="c-button-ios hide-from-legacy-ie">
+      <a id="appStoreLink" href="{{ ios_url }}" data-link-type="download" data-download-os="iOS">
+        <img src="{{ l10n_img('firefox/ios/btn-app-store.svg') }}" alt="{{ ftl('download-button-download-app-store') }}" width="152" height="45">
+      </a>
+    </div>
   {% endcall %}
 
   <div class="mzp-l-content mzp-t-content-lg">
@@ -97,8 +108,8 @@
       link_text='Hol dir den Facebook Container',
       link_url=url('firefox.facebookcontainer.index'),
       id='unfck-social-media',
-      src=static('img/firefox/campaign/unfck/de/gifs/firefox1.gif'),
-      src_still=static('img/firefox/campaign/unfck/de/gifs/still/firefox1.png'),
+      src=static('img/firefox/campaign/unfck/de/gifs/unzuck-it.gif'),
+      src_still=static('img/firefox/campaign/unfck/de/gifs/still/unzuck-it.png'),
       link_include_utms=False,
       link_is_external=False
     ) %}{% endcall %}
@@ -109,8 +120,8 @@
         link_text='Zu den Tipps',
         link_url='https://blog.mozilla.org/firefox/de/so-entlarvst-du-falschinformationen-im-web/',
         id='unfck-desinformation',
-        src=static('img/firefox/campaign/unfck/de/gifs/firefox2.gif'),
-        src_still=static('img/firefox/campaign/unfck/de/gifs/still/firefox2.png'),
+        src=static('img/firefox/campaign/unfck/de/gifs/purrfect.gif'),
+        src_still=static('img/firefox/campaign/unfck/de/gifs/still/purrfect.png'),
       ) %}{% endcall %}
 
       {% call share_item(
@@ -119,8 +130,8 @@
         link_text='Mehr dazu',
         link_url='https://blog.mozilla.org/firefox/de/hass-im-web-was-koennen-wir-gegen-hate-speech-tun/',
         id='unfck-hate-speech',
-        src=static('img/firefox/campaign/unfck/de/gifs/firefox3.gif'),
-        src_still=static('img/firefox/campaign/unfck/de/gifs/still/firefox3.png'),
+        src=static('img/firefox/campaign/unfck/de/gifs/unfck-unhate.gif'),
+        src_still=static('img/firefox/campaign/unfck/de/gifs/still/unfck-unhate.png'),
       ) %}{% endcall %}
 
       {% call share_item(
@@ -129,17 +140,17 @@
         link_text='Zur Doku',
         link_url='https://www.thesocialdilemma.com/take-action/',
         link_include_utms=False,
-        id='netflix-and-change',
-        src=static('img/firefox/campaign/unfck/de/gifs/firefox4.gif'),
-        src_still=static('img/firefox/campaign/unfck/de/gifs/still/firefox4.png'),
+        id='social-dilemma',
+        src=static('img/firefox/campaign/unfck/de/gifs/firefox2.gif'),
+        src_still=static('img/firefox/campaign/unfck/de/gifs/still/firefox2.png'),
       ) %}{% endcall %}
 
       {% call share_item(
         title='Sei Teil des Unfck-Effekts',
         info='Je mehr wir darüber sprechen, was wir im Internet ändern müssen, desto größer der Unfck-Effekt. Sag uns und der Welt, was dich am Internet nervt und teile deine Meinung auf Twitter.',
-        id='sei-teil-des-unfck-effekts',
-        src=static('img/firefox/campaign/unfck/de/gifs/firefox5.gif'),
-        src_still=static('img/firefox/campaign/unfck/de/gifs/still/firefox5.png'),
+        id='twitter-share-form',
+        src=static('img/firefox/campaign/unfck/de/gifs/one-fck-given.gif'),
+        src_still=static('img/firefox/campaign/unfck/de/gifs/still/one-fck-given.png'),
         include_cta=True
         ) %}
         <form class="c-tell" action="{{ 'https://www.twitter.com/intent/tweet?url=%s&hashtags=%s&via=%s'|format(tw_url, tw_hashtags, tw_via)|e }}" method="post">
