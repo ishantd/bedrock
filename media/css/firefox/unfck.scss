@@ -619,9 +619,9 @@ main {
 }
 
 .c-item-gif {
-    // #poli & {
-    //     background-color: $color-white;
-    // }
+    #poli & {
+        background-color: #fbccdf;
+    }
 
     #regrets & {
         background-color: #1e4ffc;
@@ -632,10 +632,14 @@ main {
     }
 
     #join & {
-        background-color: #f7f2f7;
+        background-color: #ffffff;
     }
 
     #social & {
+        background-color: #fde1e8;
+    }
+
+    #share & {
         background-color: #ebe6fe;
     }
 }
